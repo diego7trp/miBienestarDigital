@@ -10,7 +10,9 @@ class Rol extends Model
     protected $primaryKey = 'id_rol';
     public $timestamps = false;
 
-    protected $fillable = ['nombre_rol']; // ajusta al nombre real
+    protected $fillable = [
+        'nombre_rol'
+    ];
 
     public function usuarios()
     {
