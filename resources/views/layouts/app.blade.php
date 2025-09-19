@@ -11,88 +11,53 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Personalizado -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/components/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/components/routines.css') }}" rel="stylesheet">
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        
-        .navbar-brand {
-            font-weight: bold;
-        }
-        
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn {
-            border-radius: 8px;
-        }
-        
-        .alert {
-            border-radius: 10px;
-            border: none;
-        }
-        
-        .progress {
-            border-radius: 10px;
-        }
-        
-        .list-group-item {
-            border: none;
-            border-bottom: 1px solid #e9ecef;
-            border-radius: 0;
-        }
-        
-        .list-group-item:last-child {
-            border-bottom: none;
-        }
-        
-        .bg-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-        }
-    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('dashboard') }}">
-                <i class="fas fa-heart-pulse me-2"></i>Mi Bienestar Digital
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav ms-auto">
-                    <span class="navbar-text me-3">
-                        <i class="fas fa-user me-2"></i>{{ Auth::user()->nombre }}
-                    </span>
-                    <a class="nav-link" href="{{ route('dashboard') }}">
-                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                    </a>
-                    <a class="nav-link" href="{{ route('rutinas.index') }}">
-                        <i class="fas fa-tasks me-2"></i>Rutinas
-                    </a>
-                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-light btn-sm">
-                            <i class="fas fa-sign-out-alt me-2"></i>Salir
-                        </button>
-                    </form>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('dashboard') }}">
+            <i class="fas fa-heart-pulse me-2"></i>Mi Bienestar Digital
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text me-3">
+                    <i class="fas fa-user me-2"></i>{{ Auth::user()->nombre }}
+                </span>
+                <a class="nav-link" href="{{ route('dashboard') }}">
+                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                </a>
+                <a class="nav-link" href="{{ route('rutinas.index') }}">
+                    <i class="fas fa-tasks me-2"></i>Rutinas
+                </a>
+                <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-light btn-sm ms-2">
+                        <i class="fas fa-sign-out-alt me-2"></i>Salir
+                    </button>
+                </form>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <div class="container mt-4">
         @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show error-spacing" role="alert">
                 <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
@@ -109,7 +74,7 @@
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <ul class="mb-0">
                     @foreach($errors->all() as $error)
-                        <li><i class="fas fa-exclamation-triangle me-2"></i>{{ $error }}</li>
+                        <li class="wrong-font-size"><i class="fas fa-exclamation-triangle me-2"></i>{{ $error }}</li>
                     @endforeach
                 </ul>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -125,13 +90,8 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <!-- Custom Scripts -->
-    <script>
-        // Auto-hide alerts after 5 seconds
-        setTimeout(function() {
-            $('.alert').fadeOut('slow');
-        }, 5000);
-    </script>
+    <!-- JavaScript Personalizado -->
+    <script src="{{ asset('js/app.js') }}"></script>
     
     @yield('scripts')
 </body>

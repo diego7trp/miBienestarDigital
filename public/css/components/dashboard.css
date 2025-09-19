@@ -1,4 +1,4 @@
-/* ===== DASHBOARD ===== */
+/* ===== DASHBOARD CORREGIDO ===== */
 .dashboard-header {
     background-color: white;
     border-radius: var(--border-radius-lg);
@@ -8,126 +8,48 @@
     border-left: 4px solid var(--primary-color);
 }
 
-.dashboard-header h2 {
-    color: var(--text-dark);
-    margin: 0;
-    font-weight: 700;
-}
-
-.dashboard-header .date {
-    color: var(--text-muted);
-    font-size: 1rem;
-    margin: 0;
-}
-
-/* Cards de estadísticas */
-.stat-card {
-    background: white;
-    border: 2px solid var(--border-light);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    height: 100%;
-}
-
-.stat-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-}
-
 .stat-card.primary {
     border-color: var(--primary-color);
+}
+
+.stat-card.primary .icon { 
+    color: var(--primary-color); 
 }
 
 .stat-card.secondary {
     border-color: var(--secondary-color);
 }
 
+.stat-card.secondary .icon { 
+    color: var(--secondary-color); 
+}
+
 .stat-card.success {
     border-color: var(--success-color);
+}
+
+.stat-card.success .icon { 
+    color: var(--success-color); 
 }
 
 .stat-card.accent {
     border-color: var(--accent-color);
 }
 
-.stat-card h3 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 0;
-    color: var(--text-dark);
+.stat-card.accent .icon { 
+    color: var(--accent-color); 
 }
 
-.stat-card p {
-    margin: 0.5rem 0 0 0;
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-.stat-card .icon {
-    font-size: 2.5rem;
-    opacity: 0.7;
-    margin-bottom: 1rem;
-}
-
-.stat-card.primary .icon { color: var(--primary-color); }
-.stat-card.secondary .icon { color: var(--secondary-color); }
-.stat-card.success .icon { color: var(--success-color); }
-.stat-card.accent .icon { color: var(--accent-color); }
-
-/* Panel de rutinas pendientes */
-.pending-routines {
-    background: white;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
-}
-
+/* Panel de rutinas pendientes CORREGIDO */
 .pending-routines .card-header {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color) !important;
     color: white;
     border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
     border: none;
 }
 
-.routine-item {
-    padding: 1.25rem;
-    border-bottom: 1px solid var(--border-light);
-    transition: all 0.2s ease;
-}
-
-.routine-item:hover {
-    background-color: rgba(72, 114, 219, 0.05);
-}
-
-.routine-item:last-child {
-    border-bottom: none;
-}
-
-.routine-title {
-    font-weight: 600;
-    color: var(--text-dark);
-    margin: 0 0 0.5rem 0;
-}
-
-.routine-description {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin: 0 0 0.75rem 0;
-}
-
-.routine-meta {
-    font-size: 0.8rem;
-    color: var(--text-light);
-}
-
-.routine-actions {
-    display: flex;
-    gap: 0.5rem;
-}
-
 .btn-complete {
-    background-color: var(--success-color);
+    background-color: var(--success-color) !important;
     border: none;
     color: white;
     padding: 8px 12px;
@@ -137,17 +59,12 @@
 }
 
 .btn-complete:hover {
-    background-color: var(--success-hover);
+    background-color: var(--success-hover) !important;
     transform: scale(1.05);
+    color: white !important;
 }
 
-/* Panel lateral */
-.sidebar-panel {
-    background: white;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
-}
-
+/* Progress circle CORREGIDO */
 .progress-circle {
     width: 80px;
     height: 80px;
@@ -160,31 +77,9 @@
     position: relative;
 }
 
-.progress-circle::before {
-    content: '';
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: white;
-    position: absolute;
-}
-
-.progress-text {
-    position: relative;
-    z-index: 1;
-    font-weight: 700;
-    color: var(--text-dark);
-}
-
-/* Errores visuales del dashboard */
-.error-spacing .stat-card {
-    margin-bottom: 23px; /* Error intencional */
-}
-
-.routine-item:nth-child(odd) {
-    padding-left: 1.5rem; /* Error intencional */
-}
-
-.routine-item:nth-child(even) {
-    padding-left: 1.25rem; /* Error intencional */
+.sidebar-panel .card-header {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    border: none;
 }
