@@ -5,11 +5,10 @@ use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
-/*
-|--------------------------------------------------------------------------
-| Rutas de Autenticación (públicas)
-|--------------------------------------------------------------------------
-*/
+
+
+
+
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -17,11 +16,9 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-/*
-|--------------------------------------------------------------------------
-| Ruta raíz - Redireccionar según autenticación
-|--------------------------------------------------------------------------
-*/
+
+
+
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -30,11 +27,9 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Rutas Protegidas (requieren autenticación)
-|--------------------------------------------------------------------------
-*/
+
+
+
 
 Route::middleware('auth')->group(function () {
     
@@ -48,5 +43,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('rutinas', RutinaController::class);
     Route::post('/rutinas/{rutina}/completar', [RutinaController::class, 'marcarCompletada'])
          ->name('rutinas.completar');
+
+    Route::get('/perfil', [PerfilController::class, 'show'])->name('perfil.show');
+    Route::get('/perfil/editar', [PerfilController::class, 'edit'])->name('perfil.edit');
+    Route::put('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
          
 });
+
+// Perfil

@@ -184,24 +184,7 @@
         </div>
         
         <!-- Acciones Rápidas -->
-        <div class="card">
-            <div class="card-header">
-                <h6 class="mb-0"><i class="fas fa-bolt me-2"></i>Acciones Rápidas</h6>
-            </div>
-            <div class="card-body">
-                <div class="d-grid gap-2">
-                    <a href="{{ route('rutinas.create') }}" class="btn btn-outline-primary">
-                        <i class="fas fa-plus me-2"></i>Nueva Rutina
-                    </a>
-                    <a href="{{ route('rutinas.index') }}" class="btn btn-outline-secondary">
-                        <i class="fas fa-list me-2"></i>Ver Todas las Rutinas
-                    </a>
-                    <button class="btn btn-outline-info" onclick="location.reload()">
-                        <i class="fas fa-sync me-2"></i>Actualizar Dashboard
-                    </button>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </div>
 @endsection

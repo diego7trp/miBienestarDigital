@@ -20,7 +20,14 @@ class Usuario extends Authenticatable
         'nombre',
         'correo',
         'password_hash',
-        'id_rol'
+        'id_rol',
+        'genero',
+        'edad',
+        'peso',
+        'altura',
+        'telefono',
+        'condiciones_medicas',
+        'perfil_completado'
     ];
 
     protected $hidden = [
@@ -29,10 +36,11 @@ class Usuario extends Authenticatable
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'perfil_completado' => 'boolean',
+        'peso' => 'decimal:2'
     ];
 
-    // IMPORTANTE: Personalizar para tu estructura de BD
+    // Métodos de autenticación (mantener los existentes)
     public function getAuthIdentifierName()
     {
         return 'id_usuario';
@@ -59,7 +67,7 @@ class Usuario extends Authenticatable
         $this->attributes['password_hash'] = Hash::make($value);
     }
 
-    // Relaciones
+    // Relaciones existentes
     public function rol()
     {
         return $this->belongsTo(Rol::class, 'id_rol', 'id_rol');
@@ -85,7 +93,7 @@ class Usuario extends Authenticatable
         return $this->hasMany(Meta::class, 'id_usuario', 'id_usuario');
     }
 
-    // Helper para verificar roles
+    // Métodos helper
     public function esPaciente()
     {
         return $this->id_rol === 1;
@@ -99,5 +107,32 @@ class Usuario extends Authenticatable
     public function esEspecialista()
     {
         return $this->id_rol === 3;
+    }
+
+    public function tienePerfilCompleto()
+    {
+        return $this->perfil_completado;
+    }
+
+    // Calcular IMC
+    public function getImcAttribute()
+    {
+        if ($this->peso && $this->altura) {
+            $alturaMetros = $this->altura / 100;
+            return round($this->peso / ($alturaMetros * $alturaMetros), 2);
+        }
+        return null;
+    }
+
+    // Obtener categoría de IMC
+    public function getCategoriaImcAttribute()
+    {
+        $imc = $this->imc;
+        if (!$imc) return null;
+
+        if ($imc < 18.5) return 'Bajo peso';
+        if ($imc < 25) return 'Peso normal';
+        if ($imc < 30) return 'Sobrepeso';
+        return 'Obesidad';
     }
 }
