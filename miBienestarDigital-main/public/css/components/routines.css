@@ -1,0 +1,262 @@
+/* ===== RUTINAS ===== */
+.routines-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.routines-title {
+    color: var(--text-dark);
+    font-weight: 700;
+    margin: 0;
+}
+
+.btn-new-routine {
+    background-color: var(--success-color);
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    color: white;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-new-routine:hover {
+    background-color: var(--success-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Cards de rutinas */
+.routine-card {
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: var(--border-radius-lg);
+    transition: all 0.3s ease;
+    height: 100%;
+    overflow: hidden;
+}
+
+.routine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.routine-card-header {
+    background-color: var(--bg-light);
+    border-bottom: 2px solid var(--primary-color);
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.routine-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.status-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.status-btn.completed {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.status-btn.pending {
+    background-color: transparent;
+    border-color: var(--border-color);
+    color: var(--text-muted);
+}
+
+.status-btn:hover {
+    transform: scale(1.1);
+}
+
+.routine-card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.routine-description {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    line-height: 1.5;
+}
+
+.routine-meta {
+    margin-bottom: 1.5rem;
+}
+
+.routine-meta-item {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.routine-meta-item i {
+    width: 16px;
+    color: var(--primary-color);
+}
+
+.routine-progress {
+    margin-bottom: 1rem;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.progress-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.progress-percentage {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.progress-bar-custom {
+    height: 8px;
+    background-color: var(--border-light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--success-color);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+/* Footer de acciones */
+.routine-card-footer {
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--border-light);
+    padding: 1rem 1.5rem;
+}
+
+.btn-group-custom {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 8px 12px;
+    border: 2px solid;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-view {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background: transparent;
+}
+
+.btn-view:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-edit {
+    color: var(--warning-color);
+    border-color: var(--warning-color);
+    background: transparent;
+}
+
+.btn-edit:hover {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.btn-delete {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background: transparent;
+}
+
+.btn-delete:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Estado vacío */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.empty-state h4 {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+/* Errores visuales en rutinas */
+.routine-card:nth-child(3n) {
+    margin-top: 5px; /* Error intencional */
+}
+
+.routine-meta-item:last-child {
+    margin-bottom: 12px; /* Error intencional */
+}
+
+.btn-action:nth-child(2) {
+    margin-left: 3px; /* Error intencional */
+}
