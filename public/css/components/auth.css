@@ -1,4 +1,4 @@
-/* ===== PÁGINAS DE AUTENTICACIÓN MEJORADAS ===== */
+/* Pagina de autenticaccion*/
 .auth-container {
     min-height: 100vh;
     background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
@@ -131,7 +131,7 @@
     font-weight: 500;
 }
 
-/* Títulos de secciones */
+/* titulos secciones */
 .auth-section-title {
     color: var(--text-dark) !important;
     font-weight: 600;

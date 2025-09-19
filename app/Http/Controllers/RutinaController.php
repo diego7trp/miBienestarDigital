@@ -152,7 +152,6 @@ class RutinaController extends Controller
             ->firstOrFail();
 
         try {
-            // Eliminar validaciones relacionadas primero
             $rutina->validaciones()->delete();
             
             // Eliminar la rutina

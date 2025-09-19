@@ -1,7 +1,7 @@
-// ===== APLICACIÓN PRINCIPAL =====
+//  APLICACIÓN PRINCIPAL 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Auto-hide alerts después de 5 segundos
+    // alertas después de 5 segundos
     setTimeout(function() {
         const alerts = document.querySelectorAll('.alert');
         alerts.forEach(alert => {
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 5000);
 
-    // Animaciones de entrada para cards
+    // animaciones de entradas
     const cards = document.querySelectorAll('.card, .routine-card, .stat-card');
     cards.forEach((card, index) => {
         card.style.opacity = '0';
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, index * 100);
     });
 
-    // Confirmación para botones de eliminar
+    // confirmacion del boton de eli inar
     const deleteButtons = document.querySelectorAll('.btn-delete, [data-confirm]');
     deleteButtons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -40,14 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Toggle para rutinas completadas
+    // Toggle para las rutinas completadas
     setupRoutineToggle();
     
     // Setup de tooltips
     setupTooltips();
 });
 
-// ===== RUTINAS =====
+//  RUTINAS 
 function setupRoutineToggle() {
     const toggleButtons = document.querySelectorAll('.btn-toggle-rutina, .status-btn');
     
@@ -57,7 +57,7 @@ function setupRoutineToggle() {
             
             if (!rutinaId) return;
             
-            // Cambiar estado visual inmediatamente
+            // Cambiar estado visual 
             const isCompleted = this.classList.contains('completed');
             
             if (isCompleted) {
@@ -89,24 +89,23 @@ function setupRoutineToggle() {
                 if (data.success) {
                     showToast(data.mensaje, data.completada ? 'success' : 'info');
                     
-                    // Actualizar progreso si existe
+                    // Actualizar progreso
                     updateProgress();
                 } else {
-                    // Revertir cambios si hay error
                     location.reload();
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 showToast('Error al actualizar la rutina', 'danger');
-                // Revertir cambios
+                
                 location.reload();
             });
         });
     });
 }
 
-// ===== NOTIFICACIONES TOAST =====
+//  Notificaciones toast
 function showToast(message, type = 'info') {
     // Crear contenedor si no existe
     let container = document.getElementById('toast-container');
@@ -118,7 +117,7 @@ function showToast(message, type = 'info') {
         document.body.appendChild(container);
     }
     
-    // Determinar clase de color
+    // clases de color
     let colorClass = 'bg-primary';
     switch(type) {
         case 'success': colorClass = 'bg-success'; break;
@@ -156,7 +155,7 @@ function showToast(message, type = 'info') {
     });
 }
 
-// ===== ACTUALIZAR PROGRESO =====
+//  ACTUALIZAR PROGRESO 
 function updateProgress() {
     const progressBars = document.querySelectorAll('.progress-fill, .progress-bar');
     progressBars.forEach(bar => {
@@ -168,7 +167,7 @@ function updateProgress() {
     });
 }
 
-// ===== TOOLTIPS =====
+//  TOOLTIPS 
 function setupTooltips() {
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"], [title]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -176,7 +175,7 @@ function setupTooltips() {
     });
 }
 
-// ===== UTILIDADES =====
+//  UTILIDADES 
 function formatDate(date) {
     return new Date(date).toLocaleDateString('es-ES', {
         year: 'numeric',
@@ -192,23 +191,21 @@ function formatTime(time) {
     });
 }
 
-// ===== ERRORES VISUALES INTENCIONADOS =====
-// Espaciado inconsistente en elementos
 setTimeout(() => {
     const randomElements = document.querySelectorAll('.card, .btn, .alert');
     const randomElement = randomElements[Math.floor(Math.random() * randomElements.length)];
     if (randomElement) {
-        randomElement.style.marginBottom = '23px'; // Error intencional
+        randomElement.style.marginBottom = '23px'; 
     }
 }, 1000);
 
-// Alineación incorrecta aleatoria
+
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         const textElements = document.querySelectorAll('p, span, small');
         if (textElements.length > 5) {
             const randomIndex = Math.floor(Math.random() * Math.min(textElements.length, 10));
-            textElements[randomIndex].style.paddingLeft = '7px'; // Error intencional
+            textElements[randomIndex].style.paddingLeft = '7px'; 
         }
     }, 2000);
 });
