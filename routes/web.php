@@ -5,7 +5,12 @@ use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
+use App\Http\Controllers\DashboardController;
 
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // ... otras rutas
+});
 
 
 
@@ -51,3 +56,17 @@ Route::middleware('auth')->group(function () {
 });
 
 // Perfil
+Route::middleware('auth')->group(function () {
+    // Dashboard unificado
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // Rutas existentes...
+    Route::resource('rutinas', RutinaController::class);
+    Route::resource('tareas', TareaController::class);
+    // ...
+});
+
+// Redirección raíz
+Route::get('/', function () {
+    return auth()->check() ? redirect('/dashboard') : redirect('/login');
+});

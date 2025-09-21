@@ -40,7 +40,7 @@ class Usuario extends Authenticatable
         'peso' => 'decimal:2'
     ];
 
-    // Métodos de autenticación (mantener los existentes)
+    // Métodos de autenticación
     public function getAuthIdentifierName()
     {
         return 'id_usuario';
@@ -67,7 +67,7 @@ class Usuario extends Authenticatable
         $this->attributes['password_hash'] = Hash::make($value);
     }
 
-    // Relaciones existentes
+    // Relaciones
     public function rol()
     {
         return $this->belongsTo(Rol::class, 'id_rol', 'id_rol');
@@ -93,7 +93,12 @@ class Usuario extends Authenticatable
         return $this->hasMany(Meta::class, 'id_usuario', 'id_usuario');
     }
 
-    // Métodos helper
+    public function consejos()
+    {
+        return $this->hasMany(Consejo::class, 'id_usuario', 'id_usuario');
+    }
+
+    // Métodos helper para roles
     public function esPaciente()
     {
         return $this->id_rol === 1;

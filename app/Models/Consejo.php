@@ -11,13 +11,18 @@ class Consejo extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'texto',
-        'id_habito',
-        // ...
+        'titulo',
+        'descripcion',
+        'fecha_creacion',
+        'id_usuario'
     ];
 
-    public function habito()
+    protected $casts = [
+        'fecha_creacion' => 'datetime'
+    ];
+
+    public function usuario()
     {
-        return $this->belongsTo(Habito::class, 'id_habito', 'id_habito');
+        return $this->belongsTo(Usuario::class, 'id_usuario', 'id_usuario');
     }
 }
