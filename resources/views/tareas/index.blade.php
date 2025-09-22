@@ -179,7 +179,7 @@
 
 <!-- Paginación -->
 <div class="d-flex justify-content-center mt-4">
-    {{ $tareas->withQueryString()->links() }}
+    {{ $tareas->appends(request()->query())->links() }}
 </div>
 
 @else
