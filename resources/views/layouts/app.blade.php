@@ -21,6 +21,8 @@
     
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
