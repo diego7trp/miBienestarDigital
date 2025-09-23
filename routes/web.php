@@ -1,59 +1,42 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RutinaController;
-use App\Http\Controllers\TareaController;
-use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\View; // Importamos la clase View para usar View::make()
 
 /*
 |--------------------------------------------------------------------------
-| Rutas públicas
+| Web Routes
 |--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
 */
 
-// Login
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-
-// Registro
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
-
-// Redirección raíz
+// Rutas de Vistas
 Route::get('/', function () {
-    return auth()->check() ? redirect()->route('dashboard') : redirect()->route('login');
-});
+    return View::make('login');
+})->name('login');
 
+Route::get('/admin_panel', function () {
+    return View::make('admin_panel');
+})->name('admin.dashboard');
 
-/*
-|--------------------------------------------------------------------------
-| Rutas protegidas (requieren login)
-|--------------------------------------------------------------------------
-*/
-Route::middleware('auth')->group(function () {
+// Ruta para la tabla de usuarios
+Route::get('/usuarios', function () {
+    return View::make('admin_usuario');
+})->name('usuarios.gestion');
 
-    // Logout
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// Rutas para las vistas de especialista y paciente
+Route::get('/especialista', function () {
+    return View::make('especialista_panel');
+})->name('especialista.dashboard');
 
-    // Dashboard (solo uno definido)
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/paciente', function () {
+    return View::make('paciente_panel');
+})->name('paciente.dashboard');
 
-    // Rutinas
-    Route::resource('rutinas', RutinaController::class);
-    Route::post('/rutinas/{rutina}/completar', [RutinaController::class, 'marcarCompletada'])
-         ->name('rutinas.completar');
-
-    // Tareas
-    Route::resource('tareas', TareaController::class);
-    Route::post('/tareas/{tarea}/completar', [TareaController::class, 'completar'])->name('tareas.completar');
-    Route::get('/tareas-calendario', [TareaController::class, 'calendario'])->name('tareas.calendario');
-    Route::get('/tareas-vencidas', [TareaController::class, 'vencidas'])->name('tareas.vencidas');
-
-    // Perfil
-    Route::get('/perfil', [PerfilController::class, 'show'])->name('perfil.show');
-    Route::get('/perfil/editar', [PerfilController::class, 'edit'])->name('perfil.edit');
-    Route::put('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
-});
+// Rutas para procesar formularios
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
