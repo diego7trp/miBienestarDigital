@@ -15,9 +15,10 @@
 }
 
 .navbar-custom .navbar-brand:hover {
-    color: #E8F2FF !important;
+    color: #E8F2FF;
     transform: scale(1.05);
 }
+
 
 .navbar-custom .navbar-text {
     color: rgba(255,255,255,0.95) !important;

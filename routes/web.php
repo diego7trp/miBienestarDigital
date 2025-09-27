@@ -7,12 +7,21 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\TareaController;
 use App\Http\Controllers\PerfilController;
+use App\HttpVControllers\adminController;
+
+
+Route::get('/admin/panel', [AdminController::class, 'admin_panel']);
+Route::get('/admin/usuario', [AdminController::class, 'admin_usuario']);
+Route::get('/admin/gestion', [AdminController::class, 'admin_gestionUsuario']);
+Route::get('/admin/administrador', [AdminController::class, 'administrador']);
+
 
 /*
 |--------------------------------------------------------------------------
 | Rutas públicas
 |--------------------------------------------------------------------------
 */
+
 
 // Login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

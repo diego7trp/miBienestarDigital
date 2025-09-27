@@ -24,6 +24,9 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
 </head>
+<style>
+
+</style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container">

@@ -1,23 +1,17 @@
 /* Pagina de autenticaccion*/
 .auth-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
-    display: flex;
-    align-items: center;
-    padding: 2rem 0;
+    background: linear-gradient(135deg, #E9F1FF 0%, #F8F9FA 100%);
 }
 
 .auth-card {
-    border: none;
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    max-width: 500px;
-    margin: 0 auto;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .auth-header {
-    background-color: var(--primary-color) !important;
+    margin-top: 100px;
+    background-color: rgb(68, 20, 170) !important;
     color: white !important;
     padding: 2.5rem 2rem;
     text-align: center;
