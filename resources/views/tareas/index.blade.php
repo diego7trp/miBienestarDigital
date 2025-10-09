@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Header -->
+<div class="dashboard-container">
+    <x-sidebar />
+    
+    <div class="main-content">
+    <!-- Header -->
 <div class="tasks-header">
     <h2 class="tasks-title"><i class="fas fa-tasks me-2"></i>Mis Tareas</h2>
     <a href="{{ route('tareas.create') }}" class="btn-new-task">
@@ -282,5 +286,8 @@ $(document).ready(function() {
         $(this).closest('form').submit();
     });
 });
-</script>
+</script>    
+
+    </div>
+</div>
 @endsection
