@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="dashboard-container">
+    <x-sidebar />
+    
+    <div class="main-content">
 <div class="routines-header">
     <h2 class="routines-title"><i class="fas fa-tasks me-2"></i>Mis Rutinas</h2>
     <a href="{{ route('rutinas.create') }}" class="btn-new-routine">
@@ -178,4 +182,6 @@ $(document).ready(function() {
     }, 1000);
 });
 </script>
+    </div>
+</div>
 @endsection

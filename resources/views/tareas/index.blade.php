@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="dashboard-container">
+    <x-sidebar />
+    
+    <div class="main-content">
 <!-- Header -->
 <div class="tasks-header">
     <h2 class="tasks-title"><i class="fas fa-tasks me-2"></i>Mis Tareas</h2>
@@ -283,4 +287,6 @@ $(document).ready(function() {
     });
 });
 </script>
+    </div>
+</div>
 @endsection
