@@ -2,47 +2,63 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    // Especificar el nombre de la tabla
+    protected $table = 'Usuario';
+    
+    // Especificar la clave primaria
+    protected $primaryKey = 'id_usuario';
+
     protected $fillable = [
-        'name',
+        'nombre',
         'email',
         'password',
+        'fecha_nacimiento',
+        'sexo',
+        // Agrega otros campos que tengas
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Relación con rutinas
+     * Segundo parámetro: foreign key en la tabla Rutina
+     * Tercer parámetro: local key en la tabla Usuario
      */
-    protected function casts(): array
+    public function rutinas()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Rutina::class, 'id_usuario', 'id_usuario');
+    }
+
+    /**
+     * Relación con tareas
+     */
+    public function tareas()
+    {
+        return $this->hasMany(Tarea::class, 'id_usuario', 'id_usuario');
+    }
+
+    /**
+     * Relación con metas
+     * IMPORTANTE: Ajusta 'paciente_id' si tu columna se llama diferente
+     */
+    public function metas()
+    {
+        return $this->hasMany(Meta::class, 'id_usuario', 'id_usuario');
     }
 }

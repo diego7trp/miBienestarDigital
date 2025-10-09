@@ -24,7 +24,7 @@
                 <i class="fas fa-tasks"></i>Tareas
             </a>
             @endif
-            <a href="#" class="nav-link-custom">
+            <a href="{{ route('metas.index') }}" class="nav-link-custom">
                 <i class="fas fa-bullseye"></i>Metas
             </a>
             <a href="#" class="nav-link-custom">
@@ -84,10 +84,10 @@
             <div class="action-card">
                 <div class="action-card-header">
                     <h5 class="action-card-title">Progreso de Metas</h5>
-                    <p class="action-card-subtitle">{{ isset($estadisticas['metas_cumplidas']) ? $estadisticas['metas_cumplidas'] : '2' }} de 4 metas cumplidas este mes.</p>
+                    <p class="action-card-subtitle">{{ isset($estadisticas['metas_cumplidas']) ? $estadisticas['metas_cumplidas'] : '0' }} de 4 metas cumplidas este mes.</p>
                 </div>
                 <div class="action-card-footer">
-                    <a href="#" class="btn-action-primary">
+                    <a href="{{ route('metas.index') }}" class="btn-action-primary">
                         <i class="fas fa-chart-line"></i>Ver Detalles
                     </a>
                 </div>
@@ -126,7 +126,7 @@
                     <i class="fas fa-heart"></i>
                 </div>
                 <h3 class="stat-number-large">{{ $estadisticas['habitos_activos'] ?? 0 }}</h3>
-                <p class="stat-label-large">Hábitos</p>
+                <p class="stat-label-large">Hábitos Activos</p>
             </div>
         </div>
 

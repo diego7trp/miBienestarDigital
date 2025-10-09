@@ -38,7 +38,7 @@ class DashboardController extends Controller
             'rutinas_completadas_hoy' => 0, // Simplificado por ahora
             'tareas_pendientes' => $usuario->tareas ? $usuario->tareas->where('estado', 'pendiente')->count() : 0,
             'tareas_vencidas' => 0, // Simplificado por ahora
-            'metas_cumplidas' => $usuario->metas ? $usuario->metas->where('cumplida', true)->count() : 0,
+            'metas_cumplidas' => $usuario->metas ? $usuario->metas->where('estado', 'completada')->count() : 0,
             'habitos_activos' => $usuario->habitos ? $usuario->habitos->count() : 0,
         ];
 

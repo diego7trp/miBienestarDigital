@@ -7,21 +7,24 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\TareaController;
 use App\Http\Controllers\PerfilController;
-use App\HttpVControllers\adminController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MetaController;
 
-
+/*
+|--------------------------------------------------------------------------
+| Rutas de administrador
+|--------------------------------------------------------------------------
+*/
 Route::get('/admin/panel', [AdminController::class, 'admin_panel']);
 Route::get('/admin/usuario', [AdminController::class, 'admin_usuario']);
 Route::get('/admin/gestion', [AdminController::class, 'admin_gestionUsuario']);
 Route::get('/admin/administrador', [AdminController::class, 'administrador']);
-
 
 /*
 |--------------------------------------------------------------------------
 | Rutas públicas
 |--------------------------------------------------------------------------
 */
-
 
 // Login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -36,7 +39,6 @@ Route::get('/', function () {
     return auth()->check() ? redirect()->route('dashboard') : redirect()->route('login');
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Rutas protegidas (requieren login)
@@ -47,7 +49,7 @@ Route::middleware('auth')->group(function () {
     // Logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    // Dashboard (solo uno definido)
+    // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Rutinas
@@ -65,4 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/perfil', [PerfilController::class, 'show'])->name('perfil.show');
     Route::get('/perfil/editar', [PerfilController::class, 'edit'])->name('perfil.edit');
     Route::put('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
+
+    // Metas
+    Route::resource('metas', MetaController::class);
+    Route::post('metas/{meta}/progreso', [MetaController::class, 'updateProgreso'])->name('metas.progreso');
 });
