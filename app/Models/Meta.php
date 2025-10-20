@@ -9,8 +9,8 @@ class Meta extends Model
 {
     use HasFactory;
 
-    protected $table = 'metas';
-
+    protected $table = 'Meta';
+public $timestamps = false;
     protected $fillable = [
         'id_usuario',  // Cambiar de paciente_id
         'titulo',

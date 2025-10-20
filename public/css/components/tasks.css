@@ -31,6 +31,7 @@
     transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
     color: white !important;
+    text-decoration: none;
 }
 
 /* ===== ESTADÍSTICAS ===== */
